@@ -1,4 +1,5 @@
 ﻿using System;
+using Utils;
 
 namespace Ex1
 {
@@ -12,9 +13,9 @@ namespace Ex1
             do
             {
                 Console.Write("Введите первое целое число: ");
-                var firstInt = InputInt();
+                var firstInt = Helper.InputInt();
                 Console.Write("Введите второе целое число: ");
-                var secondInt = InputInt();
+                var secondInt = Helper.InputInt();
                 Console.Write("Введите первое дробное число: ");
                 var firstDouble = InputDouble();
                 Console.Write("Введите второе дробное число: ");
@@ -36,21 +37,6 @@ namespace Ex1
 
             } while (Console.ReadKey(true).Key != ConsoleKey.Escape);
 
-        }
-
-        private static int InputInt(int min = int.MinValue, int max = int.MaxValue)
-        {
-            while (true)
-            {
-                if (int.TryParse(Console.ReadLine(), out var inputInt))
-                {
-                    if (inputInt <= max && inputInt >= min)
-                        return inputInt;
-                    Console.Write($"Введеное значение должно быть в диапазоне {min}-{max}: ");
-                    continue;
-                }
-                Console.WriteLine("Введено некорректное значение! Попробуйте еще раз ввести число (int)");
-            }
         }
 
         private static double InputDouble(double min = double.MinValue, double max = double.MaxValue)

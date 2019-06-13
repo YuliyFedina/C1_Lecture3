@@ -10,7 +10,10 @@ namespace Ex2
         private static void Main()
         {
             Console.WriteLine("Введите строку");
-            var myString = Console.ReadLine();
+            QuantityEachSymbolInLine(Console.ReadLine());
+        }
+        private static Dictionary<char, int> FormingDictionary(string myString)
+        {
             var dictionary = new Dictionary<char, int>();
             foreach (var t in myString)
             {
@@ -20,17 +23,37 @@ namespace Ex2
                 }
                 else
                 {
-                    dictionary.Add(t,1);
+                    dictionary.Add(t, 1);
                 }
             }
+            return dictionary;
+        }
 
-            foreach (KeyValuePair<char, int> keyValue in dictionary)
+        private static void OutputDictionary(Dictionary<char, int> dictionary)
+        {
+            foreach (var keyValue in dictionary)
             {
-                Console.WriteLine($"{keyValue.Key} - {keyValue.Value}");
-            }
+                var value = Convert.ToString(keyValue.Value);
+                var lastSymbol = value.Substring(value.Length - 1);
+                string a;
 
-            
+                if (lastSymbol == "2" || lastSymbol == "3" || lastSymbol == "4")
+                {
+                    a = "a";
+                }
+                else
+                {
+                    a = null;
+                }
            
+                Console.WriteLine($"символ {keyValue.Key} встречается {keyValue.Value} раз{a}");
+            }
+        }
+
+        private static void QuantityEachSymbolInLine(string myString)
+        {
+            var dictionary = FormingDictionary(myString);
+            OutputDictionary(dictionary);
         }
     }
 }
