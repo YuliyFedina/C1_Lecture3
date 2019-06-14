@@ -15,15 +15,15 @@ namespace Ex2
         private static Dictionary<char, int> FormingDictionary(string myString)
         {
             var dictionary = new Dictionary<char, int>();
-            foreach (var t in myString)
+                foreach (var symbol in myString)
             {
-                if (dictionary.ContainsKey(t))
+                if (dictionary.ContainsKey(symbol))
                 {
-                    dictionary[t]++;
+                    dictionary[symbol]++;
                 }
                 else
                 {
-                    dictionary.Add(t, 1);
+                    dictionary.Add(symbol, 1);
                 }
             }
             return dictionary;
